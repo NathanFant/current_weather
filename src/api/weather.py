@@ -2,27 +2,38 @@ import os
 import requests
 from dotenv import load_dotenv
 
-# Ensure this path is correct
+# Allow us to get the api key from the .env file
 load_dotenv(dotenv_path="src/api/.env")
 
 # Fetch the weather API key from the environment
 WEATHER_API = os.getenv("WEATHER_API")
-api_portion = f"&appid={WEATHER_API}"
+API_PORTION = f"&appid={WEATHER_API}"
+LITTLE_ROCK = {"latitude": 34.746483, "longitude": -92.289597}
 
 # Ensure WEATHER_API is loaded
 if not WEATHER_API:
     raise ValueError("No WEATHER_API key found in .env file")
 
-BASE_URL = "https://api.openweathermap.org/data/3.0/onecall"
+BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
 
 
-# https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={api_key}
-def get_weather_by_coords(longitude: int, latitude: int) -> str:
+def get_temp_by_coords(
+    longitude: float = LITTLE_ROCK["longitude"],
+    latitude: float = LITTLE_ROCK["latitude"],
+) -> float | None:
     lon = str(longitude)
     lat = str(latitude)
-    new_url = BASE_URL + f"?lat={lat}&lon={lon}{api_portion}"
-    return new_url
+    new_url = BASE_URL + f"lat={lat}&lon={lon}{API_PORTION}"
+
+    response = requests.get(new_url)
+    if response.status_code != 200:
+        return None
+    data = response.json()
+
+    temp_kelvin = data["main"]["temp"]
+
+    temp_fah = round((temp_kelvin - 273.15) * (9 / 5) + 32, ndigits=2)
+    return temp_fah
 
 
-# Test the function
-print(get_weather_by_coords(123, 456))
+print(get_temp_by_coords())
