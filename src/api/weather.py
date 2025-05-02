@@ -1,5 +1,6 @@
 import os
 import requests
+from typing import Optional
 from dotenv import load_dotenv
 
 # Allow us to get the api key from the .env file
@@ -14,18 +15,16 @@ LITTLE_ROCK = {"latitude": 34.746483, "longitude": -92.289597}
 if not WEATHER_API:
     raise ValueError("No WEATHER_API key found in .env file")
 
-BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
+BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 
 
 def get_temp_by_coords(
     longitude: float = LITTLE_ROCK["longitude"],
     latitude: float = LITTLE_ROCK["latitude"],
-) -> float | None:
-    lon = str(longitude)
-    lat = str(latitude)
-    new_url = BASE_URL + f"lat={lat}&lon={lon}{API_PORTION}"
+) -> Optional[float]:
 
-    response = requests.get(new_url)
+    params = {"lat": latitude, "lon": longitude, "appid": WEATHER_API}
+    response = requests.get(BASE_URL, params=params)
     if response.status_code != 200:
         return None
     data = response.json()
@@ -36,4 +35,4 @@ def get_temp_by_coords(
     return temp_fah
 
 
-print(get_temp_by_coords())
+print(get_temp_by_coords(), "degrees Fahrenheit")
