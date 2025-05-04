@@ -36,3 +36,6 @@ def get_temp_by_coords(
 
 
 print(get_temp_by_coords(), "degrees Fahrenheit")
+print(
+    f'{BASE_URL}?lat={LITTLE_ROCK["latitude"]}&lon={LITTLE_ROCK["longitude"]}&appid={WEATHER_API}'
+)
