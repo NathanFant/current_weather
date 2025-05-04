@@ -10,3 +10,8 @@ class WeatherForecastOut(BaseModel):
     precipitation_amount: float
     sunrise: time
     sunset: time
+
+
+class Coordinates(BaseModel):
+    latitude: float
+    longitude: float
