@@ -7,6 +7,12 @@ class Coordinates(BaseModel):
     longitude: float
 
 
+class Temperature(BaseModel):
+    kelvin: float
+    fahrenheit: float
+    celsius: float
+
+
 class WeatherDescription(BaseModel):
     main: str
     description: str
@@ -14,8 +20,6 @@ class WeatherDescription(BaseModel):
 
 class WeatherData(BaseModel):
     city: str
-    temperature_k: float
-    temperature_f: float
-    temperature_c: float
+    temperature: Temperature
     humidity: int
     weather: WeatherDescription
