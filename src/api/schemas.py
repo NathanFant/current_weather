@@ -1,9 +1,11 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class Coordinates(BaseModel):
-    latitude: float
-    longitude: float
+    latitude: float = Field(default=34.746483, description="Latitude of the location")
+    longitude: float = Field(
+        default=-92.289597, description="Longitude of the location"
+    )
 
 
 class Temperature(BaseModel):
