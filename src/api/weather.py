@@ -2,14 +2,14 @@ import os
 import requests
 from typing import Optional
 from dotenv import load_dotenv
-from schemas import Temperature, WeatherDescription, WeatherData
+from api.schemas import Temperature, WeatherDescription, WeatherData
 
 # Allow us to get the api key from the .env file
 load_dotenv(dotenv_path="src/api/.env")
 
 # Fetch the weather API key from the environment
 WEATHER_API = os.getenv("WEATHER_API")
-API_PORTION = f"&appid={WEATHER_API}"
+print("Loaded API key: ", WEATHER_API)
 LITTLE_ROCK = {
     "latitude": 34.746483,
     "longitude": -92.289597,
