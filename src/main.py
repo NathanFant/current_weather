@@ -6,9 +6,7 @@ app = FastAPI()
 app.include_router(weather_router, prefix="/api")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000"
-    ],  # TODO: add website 'frontend.com' when prod launch.
+    allow_origins=["*"],  # TODO: add website 'frontend.com' when prod launch.
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
