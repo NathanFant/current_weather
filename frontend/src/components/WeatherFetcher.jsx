@@ -36,18 +36,20 @@ export default function WeatherFetcher() {
         if (!weather) return;
 
         const desc = weather.weather.description;
-        const imgName = desc.replace(/\s+/g, "_").toLowerCase();
-        const imageUrl = `/weather_images/${imgName}.jpg`;
+        const className = `bg-${desc.replace(/\s+/g, "-").toLowerCase()}`;
 
-        document.body.className = document.body.className.split(" ").filter(c => !c.startsWith("bg-")).join(" ");
+        // Remove any existing background class
+        document.body.className = document.body.className.split(" ").filter(c => !c.startsWith("bg-")).join(" ").trim();
 
+        // Add new weather-based background class
         document.body.classList.add(className);
 
-        // Setting tab title
+        // Set tab title
         const temp = weather.temperature.fahrenheit;
         const city = weather.city;
         document.title = `${temp}°F in ${city}`;
     }, [weather]);
+
 
     if (error) return <div className="weather-container error">Error: {error}</div>;
     if (!weather) return <div className="weather-container loading">Loading weather...</div>;
