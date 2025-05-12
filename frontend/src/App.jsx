@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import WeatherFetcher from './WeatherFetcher'
+import WeatherFetcher from './components/WeatherFetcher'
 
 function App() {
   return (
