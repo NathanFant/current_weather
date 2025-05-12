@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from api.schemas import Temperature, WeatherDescription, WeatherData
 
 # Allow us to get the api key from the .env file
-load_dotenv(dotenv_path="src/api/.env")
+load_dotenv(dotenv_path=".env")
 
 # Fetch the weather API key from the environment
 WEATHER_API = os.getenv("WEATHER_API")
