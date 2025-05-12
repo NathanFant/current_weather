@@ -66,3 +66,78 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.weather-container {
+  max-width: 400px;
+  margin: 5vh auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+  text-align: center;
+}
+
+.weather-container.loading,
+.weather-container.error {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Background Styling */
+body[class^="bg-"] {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-image 0.5s ease-in-out;
+}
+
+/* Weather-specific backgrounds */
+.bg-clear-sky { background-image: url("/weather_images/clear_sky.jpg"); }
+.bg-few-clouds { background-image: url("/weather_images/few_clouds.jpg"); }
+.bg-scattered-clouds { background-image: url("/weather_images/scattered_clouds.jpg"); }
+.bg-broken-clouds { background-image: url("/weather_images/broken_clouds.jpg"); }
+.bg-overcast-clouds { background-image: url("/weather_images/overcast_clouds.jpg"); }
+.bg-light-rain { background-image: url("/weather_images/light_rain.jpg"); }
+.bg-moderate-rain { background-image: url("/weather_images/moderate_rain.jpg"); }
+.bg-heavy-intensity-rain { background-image: url("/weather_images/heavy_intensity_rain.jpg"); }
+.bg-very-heavy-rain { background-image: url("/weather_images/very_heavy_rain.jpg"); }
+.bg-extreme-rain { background-image: url("/weather_images/extreme_rain.jpg"); }
+.bg-freezing-rain { background-image: url("/weather_images/freezing_rain.jpg"); }
+.bg-light-intensity-shower-rain { background-image: url("/weather_images/light_intensity_shower_rain.jpg"); }
+.bg-shower-rain { background-image: url("/weather_images/shower_rain.jpg"); }
+.bg-heavy-intensity-shower-rain { background-image: url("/weather_images/heavy_intensity_shower_rain.jpg"); }
+.bg-ragged-shower-rain { background-image: url("/weather_images/ragged_shower_rain.jpg"); }
+.bg-light-snow { background-image: url("/weather_images/light_snow.jpg"); }
+.bg-snow { background-image: url("/weather_images/snow.jpg"); }
+.bg-heavy-snow { background-image: url("/weather_images/heavy_snow.jpg"); }
+.bg-sleet { background-image: url("/weather_images/sleet.jpg"); }
+.bg-light-shower-sleet { background-image: url("/weather_images/light_shower_sleet.jpg"); }
+.bg-shower-sleet { background-image: url("/weather_images/shower_sleet.jpg"); }
+.bg-light-rain-and-snow { background-image: url("/weather_images/light_rain_and_snow.jpg"); }
+.bg-rain-and-snow { background-image: url("/weather_images/rain_and_snow.jpg"); }
+.bg-light-shower-snow { background-image: url("/weather_images/light_shower_snow.jpg"); }
+.bg-shower-snow { background-image: url("/weather_images/shower_snow.jpg"); }
+.bg-heavy-shower-snow { background-image: url("/weather_images/heavy_shower_snow.jpg"); }
+.bg-thunderstorm-with-light-rain { background-image: url("/weather_images/thunderstorm_with_light_rain.jpg"); }
+.bg-thunderstorm-with-rain { background-image: url("/weather_images/thunderstorm_with_rain.jpg"); }
+.bg-thunderstorm-with-heavy-rain { background-image: url("/weather_images/thunderstorm_with_heavy_rain.jpg"); }
+.bg-light-thunderstorm { background-image: url("/weather_images/light_thunderstorm.jpg"); }
+.bg-thunderstorm { background-image: url("/weather_images/thunderstorm.jpg"); }
+.bg-heavy-thunderstorm { background-image: url("/weather_images/heavy_thunderstorm.jpg"); }
+.bg-ragged-thunderstorm { background-image: url("/weather_images/ragged_thunderstorm.jpg"); }
+.bg-thunderstorm-with-light-drizzle { background-image: url("/weather_images/thunderstorm_with_light_drizzle.jpg"); }
+.bg-thunderstorm-with-drizzle { background-image: url("/weather_images/thunderstorm_with_drizzle.jpg"); }
+.bg-thunderstorm-with-heavy-drizzle { background-image: url("/weather_images/thunderstorm_with_heavy_drizzle.jpg"); }
+.bg-mist { background-image: url("/weather_images/mist.jpg"); }
+.bg-smoke { background-image: url("/weather_images/smoke.jpg"); }
+.bg-haze { background-image: url("/weather_images/haze.jpg"); }
+.bg-sand-dust-whirls { background-image: url("/weather_images/sand_dust_whirls.jpg"); }
+.bg-fog { background-image: url("/weather_images/fog.jpg"); }
+.bg-sand { background-image: url("/weather_images/sand.jpg"); }
+.bg-dust { background-image: url("/weather_images/dust.jpg"); }
+.bg-volcanic-ash { background-image: url("/weather_images/volcanic_ash.jpg"); }
+.bg-squalls { background-image: url("/weather_images/squalls.jpg"); }
+.bg-tornado { background-image: url("/weather_images/tornado.jpg"); }

@@ -32,13 +32,30 @@ export default function WeatherFetcher() {
         fetchWeather();
     }, []);
 
-    if (error) return <div>Error: {error}</div>;
-    if (!weather) return <div>Loading weather...</div>;
+    useEffect(() => {
+        if (!weather) return;
+
+        const desc = weather.weather.description;
+        const imgName = desc.replace(/\s+/g, "_").toLowerCase();
+        const imageUrl = `/weather_images/${imgName}.jpg`;
+
+        document.body.className = document.body.className.split(" ").filter(c => !c.startsWith("bg-")).join(" ");
+
+        document.body.classList.add(className);
+
+        // Setting tab title
+        const temp = weather.temperature.fahrenheit;
+        const city = weather.city;
+        document.title = `${temp}°F in ${city}`;
+    }, [weather]);
+
+    if (error) return <div className="weather-container error">Error: {error}</div>;
+    if (!weather) return <div className="weather-container loading">Loading weather...</div>;
 
     return (
-        <div>
+        <div className="weather-container">
             <h2>Weather in {weather.city}</h2>
-            <p>{weather.weather.description}</p>
+            <p>{weather.weather.description.split(" ").map(word => word.charAt(0).toUpperCase()+word.slice(1)).join(" ")}</p>
             <p>Temperature: {weather.temperature.fahrenheit} °F</p>
             <p>Humidity: {weather.humidity}%</p>
         </div>
