@@ -8,7 +8,8 @@ export default function LocationSearch({ onCoordsFound }) {
         e.preventDefault();
 
         try {
-            const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`);
+            const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&q=${encodeURIComponent(query)}`);
+
             const data = await res.json();
 
             if (data.length === 0) {
@@ -16,9 +17,22 @@ export default function LocationSearch({ onCoordsFound }) {
                 return;
             }
 
-            const { lat, lon } = data[0];
-            onCoordsFound(parseFloat(lat), parseFloat(lon));
-            setError("");
+            const [rawCity, rawState] = query.split(",").map(s => s.trim().toLowerCase());
+
+            const match = data.find(loc => {
+                const address = loc.address || {};
+                const cityMatch = [address.city, address.town, address.village].some(val => val?.toLowerCase() === rawCity);
+
+                const stateMatch = rawState ? address.state?.toLowerCase().includes(rawState) : true;
+
+                return cityMatch && stateMatch;
+            }) || data[0]; // Fallback to first search result if no found better location.
+
+            if (match) {
+                const { lat, lon } = match;
+                onCoordsFound(parseFloat(lat), parseFloat(lon));
+                setError("");
+            }
 
         } catch (err) {
             console.error("Geocoding failed:", err);
