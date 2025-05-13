@@ -34,7 +34,7 @@ fastapi dev main.py
 | ------------------------------------- | ------ | ----------------------------------------------------------------------------------------------------- |
 | React + FastAPI full-stack            | ✅     | `frontend/` and `backend/` directories                                                                |
 | 3–4 MVP user stories                  | ✅     | [`user-stories.md`](./user-stories.md)                                                                |
-| ERD (Entity Relationship Diagram)     | ✅     | [`erd/`](./erd/)                                                                                      |
+| ERD (Entity Relationship Diagram)     | ✅     | [`erd.png`](./ERD.png)                                                                                |
 | Wireframes (2–4 screens)              | ✅     | [`Wireframe.excalidraw`](./Wireframe.excalidraw), [`Wireframe.png`](./Wireframe.png)                  |
 | Connected frontend/backend            | ✅     | [`WeatherFetcher.jsx`](./frontend/src/components/WeatherFetcher.jsx)                                  |
 | Global styling or Tailwind used       | ✅     | [`index.css`](./frontend/src/index.css)                                                               |
