@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from db.session import get_db
 from db.models import User
 from api.weather import get_temp_by_coords
-from backend.schemas import Coordinates, WeatherData, UserOut, UserCreate, LoginRequest
+from schemas import Coordinates, WeatherData, UserOut, UserCreate, LoginRequest
 
 router = APIRouter()
 
