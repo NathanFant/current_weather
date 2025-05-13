@@ -24,3 +24,20 @@ class WeatherData(BaseModel):
     temperature: Temperature
     humidity: int
     weather: WeatherDescription
+
+
+class UserCreate(BaseModel):
+    username: str
+    password: str
+
+
+class UserOut(BaseModel):
+    id: int
+    username: str
+
+    class Config:
+        orm_mode = True
+
+
+class LoginRequest(UserCreate):
+    pass
