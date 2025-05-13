@@ -6,9 +6,11 @@ export default function LoginToggle() {
 
   return (
     <div className="login-toggle">
-      <Link to={user ? "/preferences" : "/login"}>
-        {user ? "Preferences" : "Login"}
-      </Link>
+      {user ? (
+        <Link to="/preferences">Preferences ({user.username})</Link>
+      ) : (
+        <Link to="/login">Login</Link>
+      )}
     </div>
   );
 }
