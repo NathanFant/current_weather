@@ -141,3 +141,30 @@ body[class^="bg-"] {
 .bg-volcanic-ash { background-image: url("/weather_images/volcanic_ash.jpg"); }
 .bg-squalls { background-image: url("/weather_images/squalls.jpg"); }
 .bg-tornado { background-image: url("/weather_images/tornado.jpg"); }
+
+.search_form {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.search_box {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.search_button {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+
+.search_error {
+  color: red;
+  margin-top: 0.25rem;
+}

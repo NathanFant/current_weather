@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import RequestLocation from "./RequestLocation";
+import LocationSearch from "./LocationSearch";
 
 const LITTLE_ROCK_COORDS = {
     latitude: 34.746483,
@@ -67,6 +68,7 @@ export default function WeatherFetcher() {
     return (
         <>
         <RequestLocation onCoordsRecieved={(lat, lon) => setCoords({latitude: lat, longitude: lon})} />
+        <LocationSearch onCoordsFound={(lat, lon) => setCoords({latitude: lat, longitude: lon})} />
         <div className="weather-container">
             <h2>Weather in {weather.city}</h2>
             <p>{weather.weather.description.split(" ").map(word => word.charAt(0).toUpperCase()+word.slice(1)).join(" ")}</p>
