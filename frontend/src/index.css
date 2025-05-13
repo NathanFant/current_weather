@@ -67,6 +67,7 @@ button:focus-visible {
   }
 }
 
+/* Weather container */
 .weather-container {
   max-width: 400px;
   margin: 5vh auto;
@@ -142,29 +143,85 @@ body[class^="bg-"] {
 .bg-squalls { background-image: url("/weather_images/squalls.jpg"); }
 .bg-tornado { background-image: url("/weather_images/tornado.jpg"); }
 
+/* Shared glass style */
+.glass-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: white;
+  z-index: 1000;
+}
+
+/* Search form styles */
 .search_form {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0.5rem;
-  border-radius: 8px;
-  z-index: 10;
+  flex-wrap: nowrap;
 }
 
 .search_box {
-  padding: 0.5rem;
-  font-size: 1rem;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: none;
+  font-family: inherit;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  outline: none;
+}
+
+.search_box::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .search_button {
-  padding: 0.5rem 1rem;
-  font-weight: bold;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 6px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s ease-in-out;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.search_button:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.02);
+}
+
+.search_button:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
 }
 
 .search_error {
   color: red;
   margin-top: 0.25rem;
+  font-size: 0.8rem;
+}
+
+/* Socials info box */
+.info-box {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.info-box a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
