@@ -1,18 +1,28 @@
 import { useState, useEffect } from "react";
+import RequestLocation from "./RequestLocation";
+
+const LITTLE_ROCK_COORDS = {
+    latitude: 34.746483,
+    longitude: -92.289597,
+}
 
 export default function WeatherFetcher() {
     const [weather, setWeather] = useState(null);
     const [error, setError] = useState("");
+    const [coords, setCoords] = useState(null);
 
     useEffect(() => {
+        const latitude = coords?.latitude ?? LITTLE_ROCK_COORDS.latitude;
+        const longitude = coords?.longitude ?? LITTLE_ROCK_COORDS.longitude;
+
         const fetchWeather = async () => {
             try {
                 const res = await fetch("http://localhost:8000/api/weather",  {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        latitude: 34.746483,
-                        longitude: -92.289597,
+                        latitude: latitude,
+                        longitude: longitude,
                     }),
                 });
 
@@ -30,7 +40,7 @@ export default function WeatherFetcher() {
         };
 
         fetchWeather();
-    }, []);
+    }, [coords]);
 
     useEffect(() => {
         if (!weather) return;
@@ -55,11 +65,14 @@ export default function WeatherFetcher() {
     if (!weather) return <div className="weather-container loading">Loading weather...</div>;
 
     return (
+        <>
+        <RequestLocation onCoordsRecieved={(lat, lon) => setCoords({latitude: lat, longitude: lon})} />
         <div className="weather-container">
             <h2>Weather in {weather.city}</h2>
             <p>{weather.weather.description.split(" ").map(word => word.charAt(0).toUpperCase()+word.slice(1)).join(" ")}</p>
             <p>Temperature: {weather.temperature.fahrenheit} °F</p>
             <p>Humidity: {weather.humidity}%</p>
         </div>
+        </>
     );
 }
