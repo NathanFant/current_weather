@@ -30,13 +30,13 @@ fastapi dev main.py
 
 ## ✅ Grading Requirement Map
 
-| Requirement                           | Status | Location                                                                                                             |
-| ------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------- |
-| React + FastAPI full-stack            | ✅     | `frontend/` and `backend/` directories                                                                               |
-| 3–4 MVP user stories                  | ✅     | [`user-stories.md`](./current_weather/user-stories.md)                                                               |
-| ERD (Entity Relationship Diagram)     | ✅     | [`erd/`](./current_weather/erd/)                                                                                     |
-| Wireframes (2–4 screens)              | ✅     | [`Wireframe.excalidraw`](./current_weather/Wireframe.excalidraw), [`Wireframe.png`](./current_weather/Wireframe.png) |
-| Connected frontend/backend            | ✅     | [`WeatherFetcher.jsx`](./frontend/src/components/WeatherFetcher.jsx)                                                 |
-| Global styling or Tailwind used       | ✅     | [`index.css`](./frontend/src/index.css)                                                                              |
-| Use of hooks + global state (context) | ✅     | [`CoordsContext.jsx`](./frontend/src/context/CoordsContext.jsx)                                                      |
-| Bonus API or library used             | ✅     | [Nominatim API](https://nominatim.org/) + [`react-icons`](https://react-icons.github.io/react-icons/)                |
+| Requirement                           | Status | Location                                                                                              |
+| ------------------------------------- | ------ | ----------------------------------------------------------------------------------------------------- |
+| React + FastAPI full-stack            | ✅     | `frontend/` and `backend/` directories                                                                |
+| 3–4 MVP user stories                  | ✅     | [`user-stories.md`](./user-stories.md)                                                                |
+| ERD (Entity Relationship Diagram)     | ✅     | [`erd/`](./erd/)                                                                                      |
+| Wireframes (2–4 screens)              | ✅     | [`Wireframe.excalidraw`](./Wireframe.excalidraw), [`Wireframe.png`](./Wireframe.png)                  |
+| Connected frontend/backend            | ✅     | [`WeatherFetcher.jsx`](./frontend/src/components/WeatherFetcher.jsx)                                  |
+| Global styling or Tailwind used       | ✅     | [`index.css`](./frontend/src/index.css)                                                               |
+| Use of hooks + global state (context) | ✅     | [`CoordsContext.jsx`](./frontend/src/context/CoordsContext.jsx)                                       |
+| Bonus API or library used             | ✅     | [Nominatim API](https://nominatim.org/) + [`react-icons`](https://react-icons.github.io/react-icons/) |
