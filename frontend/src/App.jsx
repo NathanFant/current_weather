@@ -6,6 +6,7 @@ import LoginToggle from './components/LoginToggle'
 
 function App() {
   return (
+    <>
     <div className='App'>
       <div className='header-bar'>
         <LocationSearch />
@@ -14,9 +15,9 @@ function App() {
 
       <h1>Current Weather</h1>
       <WeatherFetcher />
-
-      <LoginToggle />
     </div>
+    <LoginToggle />
+    </>
   )
 }
 
