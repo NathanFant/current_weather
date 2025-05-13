@@ -1,3 +1,42 @@
-# Current Weather Web APP
+# Current Weather App
 
-This is a small app that will run in the browser, will ask for the user's location, and give the user a 10 day forecast based on the location provided.
+A modern, responsive weather app built with **React (Vite)** and **FastAPI**. Users can view real-time weather for their current location or search any city by name. Styled with a minimalist glassmorphism UI and built to reflect weather dynamically in both visuals and content.
+
+---
+
+## 📸 Screenshot
+
+![Current Weather Screenshot](./current_weather/screenshot.png)
+
+---
+
+## 🛠 Setup Instructions
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### Backend
+
+```bash
+cd backend
+pip install -r requirements.txt
+fastapi dev main.py
+```
+
+## ✅ Grading Requirement Map
+
+| Requirement                           | Status | Location                                                                                                             |
+| ------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------- |
+| React + FastAPI full-stack            | ✅     | `frontend/` and `backend/` directories                                                                               |
+| 3–4 MVP user stories                  | ✅     | [`user-stories.md`](./current_weather/user-stories.md)                                                               |
+| ERD (Entity Relationship Diagram)     | ✅     | [`erd/`](./current_weather/erd/)                                                                                     |
+| Wireframes (2–4 screens)              | ✅     | [`Wireframe.excalidraw`](./current_weather/Wireframe.excalidraw), [`Wireframe.png`](./current_weather/Wireframe.png) |
+| Connected frontend/backend            | ✅     | [`WeatherFetcher.jsx`](./frontend/src/components/WeatherFetcher.jsx)                                                 |
+| Global styling or Tailwind used       | ✅     | [`index.css`](./frontend/src/index.css)                                                                              |
+| Use of hooks + global state (context) | ✅     | [`CoordsContext.jsx`](./frontend/src/context/CoordsContext.jsx)                                                      |
+| Bonus API or library used             | ✅     | [Nominatim API](https://nominatim.org/) + [`react-icons`](https://react-icons.github.io/react-icons/)                |
