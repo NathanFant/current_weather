@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import RequestLocation from "./RequestLocation";
-import LocationSearch from "./LocationSearch";
+import { useCoords } from "../context/CoordsContext";
+import WeatherCard from "./WeatherCard";
 
-const LITTLE_ROCK_COORDS = {
+const LITTLE_ROCK_COORDS = { //This is for the default location
     latitude: 34.746483,
     longitude: -92.289597,
 }
@@ -10,7 +10,7 @@ const LITTLE_ROCK_COORDS = {
 export default function WeatherFetcher() {
     const [weather, setWeather] = useState(null);
     const [error, setError] = useState("");
-    const [coords, setCoords] = useState(null);
+    const { coords } = useCoords();
 
     useEffect(() => {
         const latitude = coords?.latitude ?? LITTLE_ROCK_COORDS.latitude;
@@ -21,10 +21,7 @@ export default function WeatherFetcher() {
                 const res = await fetch("http://localhost:8000/api/weather",  {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        latitude: latitude,
-                        longitude: longitude,
-                    }),
+                    body: JSON.stringify({latitude, longitude}),
                 });
 
                 if (!res.ok) {
@@ -50,7 +47,7 @@ export default function WeatherFetcher() {
         const className = `bg-${desc.replace(/\s+/g, "-").toLowerCase()}`;
 
         // Remove any existing background class
-        document.body.className = document.body.className.split(" ").filter(c => !c.startsWith("bg-")).join(" ").trim();
+        document.body.className = document.body.className.split(" ").filter((c) => !c.startsWith("bg-")).join(" ").trim();
 
         // Add new weather-based background class
         document.body.classList.add(className);
@@ -59,6 +56,7 @@ export default function WeatherFetcher() {
         const temp = weather.temperature.fahrenheit;
         const city = weather.city;
         document.title = `${temp}°F in ${city}`;
+
     }, [weather]);
 
 
@@ -66,15 +64,6 @@ export default function WeatherFetcher() {
     if (!weather) return <div className="weather-container loading">Loading weather...</div>;
 
     return (
-        <>
-        <RequestLocation onCoordsRecieved={(lat, lon) => setCoords({latitude: lat, longitude: lon})} />
-        <LocationSearch onCoordsFound={(lat, lon) => setCoords({latitude: lat, longitude: lon})} />
-        <div className="weather-container">
-            <h2>Weather in {weather.city}</h2>
-            <p>{weather.weather.description.split(" ").map(word => word.charAt(0).toUpperCase()+word.slice(1)).join(" ")}</p>
-            <p>Temperature: {weather.temperature.fahrenheit} °F</p>
-            <p>Humidity: {weather.humidity}%</p>
-        </div>
-        </>
+        <WeatherCard weather={weather} />
     );
 }

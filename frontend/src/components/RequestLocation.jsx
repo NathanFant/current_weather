@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useCoords } from "../context/CoordsContext";
 
 
-export default function RequestLocation({ onCoordsRecieved }) {
+export default function RequestLocation() {
     const [error, setError] = useState("");
+    const { setCoords } = useCoords();
 
     useEffect(() =>  {
         if (!("geolocation" in navigator)) {
@@ -13,24 +15,15 @@ export default function RequestLocation({ onCoordsRecieved }) {
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 const { latitude, longitude } = position.coords;
-                onCoordsRecieved(latitude, longitude);
-                console.log("Coords from browser:", latitude, longitude)
+                setCoords((prev) => prev ?? { latitude, longitude });
             },
             (err) => {
                 console.error("Location permission denied or unavailable, please search for your location");
-                onCoordsRecieved(null, null);
+                setCoords((prev) => prev ?? null);
             },
-            {
-            enableHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 0,
-            }
+            { enableHighAccuracy: true, timeout: 5000, maximumAge: 0}
         );
     }, []);
 
-    return (
-        <>
-            {error && <p className="locationError">{error}</p>}
-        </>
-    );
+    return error ? <p className="locationErrror">{error}</p> : null;
 }

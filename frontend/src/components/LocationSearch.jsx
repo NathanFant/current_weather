@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { useCoords } from "../context/CoordsContext";
 
-export default function LocationSearch({ onCoordsFound }) {
+export default function LocationSearch() {
     const [query, setQuery] = useState("");
     const [error, setError] = useState("");
+    const { setCoords } = useCoords();
 
     const handleSearch = async (e) => {
         e.preventDefault();
 
         try {
             const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&q=${encodeURIComponent(query)}`);
-
             const data = await res.json();
 
             if (data.length === 0) {
@@ -30,7 +31,7 @@ export default function LocationSearch({ onCoordsFound }) {
 
             if (match) {
                 const { lat, lon } = match;
-                onCoordsFound(parseFloat(lat), parseFloat(lon));
+                setCoords({ latitude: parseFloat(lat), longitude: parseFloat(lon) })
                 setError("");
             }
 
@@ -43,7 +44,7 @@ export default function LocationSearch({ onCoordsFound }) {
 
     return (
         <form onSubmit={handleSearch} className="search_form glass-card floating-box">
-            <input type="text" value={query} placeholder="Search location..." onChange={(e) => setQuery(e.target.value)} className="search_box"/>
+            <input type="text" value={query} placeholder="Search Location..." onChange={(e) => setQuery(e.target.value)} className="search_box" />
             <button type="submit" className="search_button">Go</button>
             {error && <p className="search_error">{error}</p>}
         </form>
