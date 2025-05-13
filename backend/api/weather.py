@@ -2,7 +2,7 @@ import os
 import requests
 from typing import Optional
 from dotenv import load_dotenv
-from backend.schemas import Temperature, WeatherDescription, WeatherData
+from schemas import Temperature, WeatherDescription, WeatherData
 
 # Allow us to get the api key from the .env file
 load_dotenv(dotenv_path=".env")
