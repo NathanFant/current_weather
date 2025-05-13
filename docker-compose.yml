@@ -1,0 +1,35 @@
+services:
+  backend:
+    image: python:3.11-slim
+    container_name: current_weather_backend
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    command: >
+      sh -c "
+        apt-get update &&
+        apt-get install -y build-essential libpq-dev &&
+        pip install --no-cache-dir -r requirements.txt &&
+        uvicorn main:app --host 0.0.0.0 --port 8000
+      "
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/current_weather
+
+  db:
+    image: postgres:15
+    container_name: current_weather_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: current_weather
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
