@@ -2,6 +2,7 @@ import './App.css'
 import WeatherFetcher from './components/WeatherFetcher'
 import Socials from './components/Socials'
 import LocationSearch from './components/LocationSearch'
+import LoginToggle from './components/LoginToggle'
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
 
       <h1>Current Weather</h1>
       <WeatherFetcher />
+
+      <LoginToggle />
     </div>
   )
 }
