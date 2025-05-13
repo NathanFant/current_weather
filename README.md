@@ -6,7 +6,7 @@ A modern, responsive weather app built with **React (Vite)** and **FastAPI**. Us
 
 ## 📸 Screenshot
 
-![Current Weather Screenshot](./current_weather/screenshot.png)
+![Current Weather Screenshot](./screenshot.png)
 
 ---
 
