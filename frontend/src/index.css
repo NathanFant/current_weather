@@ -159,12 +159,26 @@ body[class^="bg-"] {
   z-index: 1000;
 }
 
+.floating-box {
+  min-width: clamp(180px, 25vw, 360px);
+  padding: 0.4rem 0.8rem;
+  height: auto;
+  min-height: 42px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
 /* Search form styles */
 .search_form {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .search_box {
@@ -215,13 +229,17 @@ body[class^="bg-"] {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .info-box a {
   color: white;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 0 0.25rem;
 }

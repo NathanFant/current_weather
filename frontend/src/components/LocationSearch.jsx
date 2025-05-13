@@ -42,7 +42,7 @@ export default function LocationSearch({ onCoordsFound }) {
     };
 
     return (
-        <form onSubmit={handleSearch} className="search_form">
+        <form onSubmit={handleSearch} className="search_form glass-card floating-box">
             <input type="text" value={query} placeholder="Search location..." onChange={(e) => setQuery(e.target.value)} className="search_box"/>
             <button type="submit" className="search_button">Go</button>
             {error && <p className="search_error">{error}</p>}
