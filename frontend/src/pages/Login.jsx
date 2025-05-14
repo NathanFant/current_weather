@@ -30,12 +30,14 @@ export default function Login() {
   };
 
   return (
-    <form onSubmit={handleLogin} className="glass-card weather-container">
+    <div className="glass-card weather-container">
+    <form onSubmit={handleLogin} >
       <h2>Login</h2>
       <input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" className="search-box"/>
       <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" className="search-box"/>
       <button type="submit" className="search_button">Login</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p style={{ color: "red" }} className="search_error">{error}</p>}
     </form>
+    </div>
   );
 }

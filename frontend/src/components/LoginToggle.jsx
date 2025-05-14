@@ -7,9 +7,9 @@ export default function LoginToggle() {
   return (
     <div className="login-toggle">
       {user ? (
-        <Link to="/preferences" className="search_button">Preferences ({user.username})</Link>
+        <Link to="/preferences">Preferences ({user.username})</Link>
       ) : (
-        <Link to="/login" className="search_button">Login</Link>
+        <Link to="/login">Login</Link>
       )}
     </div>
   );
