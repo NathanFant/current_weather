@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
 from db.session import get_db
-from db.models import User
+from db.models import User, Preference
 from api.weather import get_temp_by_coords
 from schemas import Coordinates, WeatherData, UserOut, UserCreate, LoginRequest
 
@@ -34,9 +34,6 @@ def login(login_req: LoginRequest, db: Session = Depends(get_db)):
     if not user or user.password != login_req.password:
         raise HTTPException(status_code=401, detail="Invalid credentials")
     return user
-
-
-from db.models import Preference
 
 
 @router.post("/preferences", response_model=dict)

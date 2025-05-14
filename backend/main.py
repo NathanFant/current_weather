@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api.api import router as weather_router
+from api import router as weather_router
 from db.models import Base
 from db.session import engine
 
